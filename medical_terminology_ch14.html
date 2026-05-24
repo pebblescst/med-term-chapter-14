@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Medical Terminology — Chapter 14</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing:border-box; margin:0; padding:0; }
+  :root {
+    --green:  #0F6B3F; --green-lt:#D1FAE5; --green-dk:#052E16;
+    --teal:   #0E7490; --teal-lt: #CFFAFE; --teal-dk: #083344;
+    --blue:   #1D4ED8; --blue-lt: #DBEAFE; --blue-dk: #1E3A8A;
+    --violet: #6D28D9; --violet-lt:#EDE9FE; --violet-dk:#2E1065;
+    --amber:  #B45309; --amber-lt:#FEF3C7; --amber-dk:#451A03;
+    --coral:  #C2410C; --coral-lt:#FFEDD5; --coral-dk:#431407;
+    --rose:   #9D174D; --rose-lt: #FCE7F3; --rose-dk: #500724;
+    --slate:  #334155; --slate-lt:#F1F5F9; --slate-dk:#0F172A;
+    --gray-50:#F9FAFB; --gray-100:#F3F4F6; --gray-200:#E5E7EB;
+    --gray-400:#9CA3AF; --gray-600:#4B5563; --gray-700:#374151; --black:#111827;
+    --font:'DM Sans',sans-serif; --mono:'DM Mono',monospace;
+    --radius:10px; --radius-sm:6px;
+  }
+  body { font-family:var(--font); background:var(--gray-50); color:var(--black); }
+  .module { max-width:860px; margin:0 auto; padding:2rem 1.5rem 4rem; }
+  .module-header { background:#fff; border:1px solid var(--gray-200); border-radius:var(--radius); padding:1.75rem 2rem; margin-bottom:1.5rem; display:flex; gap:1.5rem; align-items:flex-start; }
+  .header-icon { width:52px; height:52px; border-radius:var(--radius-sm); background:var(--green-lt); display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+  .header-icon svg { width:28px; height:28px; stroke:var(--green); fill:none; stroke-width:1.8; stroke-linecap:round; stroke-linejoin:round; }
+  .header-text h1 { font-size:20px; font-weight:600; }
+  .header-text p { font-size:13px; color:var(--gray-400); margin-top:3px; }
+  .progress-wrap { margin-top:14px; display:flex; align-items:center; gap:10px; }
+  .progress-bg { flex:1; height:5px; background:var(--gray-200); border-radius:3px; overflow:hidden; }
+  .progress-fill { height:100%; background:var(--green); border-radius:3px; transition:width 0.5s; width:0%; }
+  .progress-label { font-size:12px; color:var(--gray-400); white-space:nowrap; }
+  .nav-row { display:flex; gap:6px; flex-wrap:wrap; margin-bottom:1.5rem; }
+  .tab { padding:7px 16px; font-size:13px; font-family:var(--font); font-weight:500; border:1px solid var(--gray-200); border-radius:100px; background:#fff; color:var(--gray-600); cursor:pointer; transition:all 0.15s; }
+  .tab:hover { border-color:var(--green); color:var(--green); }
+  .tab.active { background:var(--green); border-color:var(--green); color:#fff; }
+  .section { display:none; }
+  .section.active { display:block; animation:fadeIn 0.2s ease; }
+  @keyframes fadeIn { from{opacity:0;transform:translateY(6px)} to{opacity:1;transform:translateY(0)} }
+  .card { background:#fff; border:1px solid var(--gray-200); border-radius:var(--radius); padding:1.25rem 1.5rem; margin-bottom:1rem; }
+  .card-title { font-size:14px; font-weight:600; display:flex; align-items:center; gap:7px; margin-bottom:12px; }
+  .two-col { display:grid; grid-template-columns:1fr 1fr; gap:1rem; }
+  .three-col { display:grid; grid-template-columns:1fr 1fr 1fr; gap:1rem; }
+  @media(max-width:620px){ .two-col,.three-col{grid-template-columns:1fr} }
+  .badge { font-size:11px; font-weight:600; padding:2px 8px; border-radius:20px; }
+  .badge-green  { background:var(--green-lt);  color:var(--green-dk); }
+  .badge-teal   { background:var(--teal-lt);   color:var(--teal-dk); }
+  .badge-blue   { background:var(--blue-lt);   color:var(--blue-dk); }
+  .badge-violet { background:var(--violet-lt); color:var(--violet-dk); }
+  .badge-amber  { background:var(--amber-lt);  color:var(--amber-dk); }
+  .badge-coral  { background:var(--coral-lt);  color:var(--coral-dk); }
+  .badge-rose   { background:var(--rose-lt);   color:var(--rose-dk); }
+  .badge-slate  { background:var(--slate-lt);  color:var(--slate-dk); }
+  .tip { border-radius:var(--radius-sm); padding:10px 14px; font-size:13px; line-height:1.6; margin-top:10px; }
+  .tip.green  { background:var(--green-lt);  color:var(--green-dk);  border-left:3px solid var(--green); }
+  .tip.teal   { background:var(--teal-lt);   color:var(--teal-dk);   border-left:3px solid var(--teal); }
+  .tip.amber  { background:var(--amber-lt);  color:var(--amber-dk);  border-left:3px solid var(--amber); }
+  .tip.violet { background:var(--violet-lt); color:var(--violet-dk); border-left:3px solid var(--violet); }
+  .tip.coral  { background:var(--coral-lt);  color:var(--coral-dk);  border-left:3px solid var(--coral); }
+  .tip.blue   { background:var(--blue-lt);   color:var(--blue-dk);   border-left:3px solid var(--blue); }
+  .vs-item { border:1px solid var(--gray-200); border-radius:var(--radius-sm); padding:10px 12px; }
+  .vs-head { font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:0.06em; margin-bottom:4px; }
+  .vs-body { font-size:13px; color:var(--gray-600); line-height:1.5; }
+  .pitem { display:flex; gap:10px; align-items:flex-start; padding:9px 0; border-bottom:1px solid var(--gray-200); }
+  .pitem:last-child { border-bottom:none; padding-bottom:0; }
+  .pitem:first-child { padding-top:0; }
+  .pname { font-size:13.5px; font-weight:600; color:var(--black); }
+  .pdef  { font-size:12.5px; color:var(--gray-600); margin-top:2px; line-height:1.4; }
+  .gland-card { border:1px solid var(--gray-200); border-radius:var(--radius-sm); padding:12px; background:#fff; }
+  .gland-name { font-size:13px; font-weight:700; margin-bottom:2px; }
+  .gland-loc  { font-size:11px; color:var(--gray-400); margin-bottom:6px; }
+  .gland-hor  { font-size:12px; color:var(--gray-600); line-height:1.5; }
+  .sub-tabs { display:flex; gap:6px; flex-wrap:wrap; margin-bottom:1rem; }
+  .sub-tab { padding:5px 13px; font-size:12px; font-family:var(--font); font-weight:500; border:1px solid var(--gray-200); border-radius:100px; background:#fff; color:var(--gray-600); cursor:pointer; transition:all 0.15s; }
+  .sub-tab:hover { border-color:var(--green); color:var(--green); }
+  .sub-tab.active { background:var(--green); border-color:var(--green); color:#fff; }
+  .vpanel { display:none; }
+  .vpanel.active { display:block; }
+  .vtable { width:100%; border-collapse:collapse; font-size:13px; }
+  .vtable th { text-align:left; padding:8px 10px; color:var(--gray-400); font-weight:600; font-size:11px; text-transform:uppercase; letter-spacing:0.05em; border-bottom:1px solid var(--gray-200); }
+  .vtable td { padding:8px 10px; border-bottom:1px solid var(--gray-100); color:var(--black); vertical-align:top; }
+  .vtable tr:last-child td { border-bottom:none; }
+  .vtable tr:hover td { background:var(--gray-50); }
+  .vtable code { font-family:var(--mono); font-size:12px; color:var(--green-dk); background:var(--green-lt); padding:1px 6px; border-radius:3px; }
+  .fc-nav { display:flex; align-items:center; gap:12px; margin-bottom:1rem; }
+  .fc-counter { font-size:13px; color:var(--gray-400); flex:1; text-align:center; }
+  .fc-btn { width:36px; height:36px; border:1px solid var(--gray-200); border-radius:50%; background:#fff; cursor:pointer; display:flex; align-items:center; justify-content:center; color:var(--gray-600); font-size:16px; transition:all 0.15s; }
+  .fc-btn:hover { border-color:var(--green); color:var(--green); }
+  .flip-wrap { perspective:1000px; height:160px; cursor:pointer; user-select:none; }
+  .flip-inner { width:100%; height:100%; position:relative; transform-style:preserve-3d; transition:transform 0.5s cubic-bezier(.4,0,.2,1); }
+  .flip-inner.flipped { transform:rotateY(180deg); }
+  .flip-front,.flip-back { position:absolute; inset:0; backface-visibility:hidden; border-radius:var(--radius); display:flex; flex-direction:column; align-items:center; justify-content:center; padding:1.5rem; text-align:center; border:1px solid var(--gray-200); }
+  .flip-front { background:#fff; }
+  .flip-back  { background:var(--green-lt); border-color:#6EE7B7; transform:rotateY(180deg); }
+  .flip-term { font-size:22px; font-weight:600; color:var(--black); font-family:var(--mono); }
+  .flip-hint { font-size:11px; color:var(--gray-400); margin-top:6px; text-transform:uppercase; letter-spacing:0.06em; }
+  .flip-def  { font-size:16px; font-weight:600; color:var(--green-dk); }
+  .flip-ex   { font-size:12px; color:var(--green); margin-top:6px; font-family:var(--mono); }
+  .fc-shuffle { padding:6px 14px; font-size:12px; font-family:var(--font); border:1px solid var(--gray-200); border-radius:100px; background:#fff; color:var(--gray-600); cursor:pointer; margin-left:auto; display:block; margin-bottom:10px; }
+  .fc-shuffle:hover { border-color:var(--green); color:var(--green); }
+  .quiz-progress { display:flex; gap:4px; flex-wrap:wrap; margin-bottom:1.25rem; }
+  .q-dot { width:10px; height:10px; border-radius:50%; background:var(--gray-200); }
+  .q-dot.pass { background:var(--teal); }
+  .q-dot.fail { background:#E24B4A; }
+  .quiz-q-text { font-size:16px; font-weight:600; margin-bottom:1rem; line-height:1.5; }
+  .quiz-opts { display:flex; flex-direction:column; gap:8px; margin-bottom:1rem; }
+  .q-opt { padding:11px 16px; border:1px solid var(--gray-200); border-radius:var(--radius-sm); background:#fff; font-size:14px; font-family:var(--font); cursor:pointer; text-align:left; transition:all 0.15s; }
+  .q-opt:hover:not(:disabled) { border-color:var(--green); background:var(--green-lt); }
+  .q-opt.correct { background:var(--teal-lt); border-color:var(--teal); color:var(--teal-dk); font-weight:500; }
+  .q-opt.wrong   { background:#FCEBEB; border-color:#E24B4A; color:#501313; }
+  .q-fb { font-size:13px; padding:9px 14px; border-radius:var(--radius-sm); margin-bottom:1rem; }
+  .q-fb.correct { background:var(--teal-lt); color:var(--teal-dk); }
+  .q-fb.wrong   { background:#FCEBEB; color:#501313; }
+  .quiz-next { padding:9px 20px; font-size:13px; font-family:var(--font); font-weight:500; border:1px solid var(--gray-200); border-radius:100px; background:#fff; cursor:pointer; }
+  .score-wrap { text-align:center; padding:2rem 0 1rem; }
+  .score-big { font-size:52px; font-weight:700; line-height:1; }
+  .score-big.great { color:var(--teal); }
+  .score-big.ok    { color:var(--amber); }
+  .score-big.retry { color:#E24B4A; }
+  .score-msg { font-size:15px; color:var(--gray-600); margin-top:8px; margin-bottom:1.5rem; }
+  .retry-btn { padding:10px 24px; font-size:14px; font-family:var(--font); font-weight:500; border:1px solid var(--green); border-radius:100px; background:var(--green-lt); color:var(--green-dk); cursor:pointer; transition:all 0.15s; }
+  .retry-btn:hover { background:var(--green); color:#fff; }
+</style>
+</head>
+<body>
+<div class="module">
+
+  <div class="module-header">
+    <div class="header-icon">
+      <svg viewBox="0 0 24 24"><path d="M12 2a5 5 0 015 5c0 4-3 7-5 10C10 14 7 11 7 7a5 5 0 015-5z"/><circle cx="12" cy="7" r="2"/></svg>
+    </div>
+    <div style="flex:1">
+      <div class="header-text">
+        <h1>Medical Terminology — Chapter 14</h1>
+        <p>Endocrine System &nbsp;·&nbsp; 7 sections &nbsp;·&nbsp; 24 flashcards &nbsp;·&nbsp; 12-question quiz</p>
+      </div>
+      <div class="progress-wrap">
+        <div class="progress-bg"><div class="progress-fill" id="prog-fill"></div></div>
+        <div class="progress-label" id="prog-label">0%</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="nav-row" role="tablist">
+    <button class="tab active" onclick="showSec('overview',this)">Overview</button>
+    <button class="tab" onclick="showSec('glands',this)">Glands &amp; hormones</button>
+    <button class="tab" onclick="showSec('pituitary',this)">Pituitary axis</button>
+    <button class="tab" onclick="showSec('pathology',this)">Pathology</button>
+    <button class="tab" onclick="showSec('procedures',this)">Procedures</button>
+    <button class="tab" onclick="showSec('vocab',this)">Vocabulary</button>
+    <button class="tab" onclick="showSec('flashcards',this)">Flashcards</button>
+    <button class="tab" onclick="showSec('quiz',this)">Quiz</button>
+  </div>
+
+  <!-- ===== OVERVIEW ===== -->
+  <div class="section active" id="sec-overview">
+    <div class="card">
+      <div class="card-title" style="color:var(--green)">How the Endocrine System Works</div>
+      <div class="three-col">
+        <div class="vs-item"><div class="vs-head" style="color:var(--green)">Endocrine glands</div><div class="vs-body">Ductless glands that secrete hormones directly into the bloodstream (endo- = within + -crine = to secrete)</div></div>
+        <div class="vs-item"><div class="vs-head" style="color:var(--teal)">Hormones</div><div class="vs-body">Chemical messengers carried in blood to target organs; regulate metabolism, growth, reproduction, and homeostasis</div></div>
+        <div class="vs-item"><div class="vs-head" style="color:var(--blue)">Negative feedback</div><div class="vs-body">Primary control mechanism: rising hormone level signals gland to STOP secreting; falling level signals to START again</div></div>
+        <div class="vs-item"><div class="vs-head" style="color:var(--amber)">Exocrine vs. endocrine</div><div class="vs-body">Exocrine (exo- = outside): secretions released through ducts to surfaces (sweat glands, salivary glands). Endocrine: no ducts, into blood</div></div>
+        <div class="vs-item"><div class="vs-head" style="color:var(--violet)">Target organs</div><div class="vs-body">Specific cells/organs with receptors for a particular hormone; only target cells respond</div></div>
+        <div class="vs-item"><div class="vs-head" style="color:var(--coral)">Hypothalamus-pituitary axis</div><div class="vs-body">Hypothalamus (thalam/o) controls pituitary gland; pituitary controls most other endocrine glands — "master gland"</div></div>
+      </div>
+      <div class="tip green"><strong>Specialty:</strong> Endocrinology (endo- + crin/o + -logy) · <strong>Specialist:</strong> Endocrinologist &nbsp;|&nbsp; Key cf: <strong>crin/o</strong> (to secrete), <strong>aden/o</strong> (gland), <strong>thyr/o</strong> (thyroid), <strong>adren/o</strong> (adrenal)</div>
+    </div>
+    <div class="two-col">
+      <div class="card">
+        <div class="card-title" style="color:var(--teal)">Endocrine Glands at a Glance</div>
+        <div style="display:flex;flex-wrap:wrap;gap:5px">
+          <span class="badge badge-green">Hypothalamus (thalam/o)</span>
+          <span class="badge badge-teal">Pituitary (hypophys/o)</span>
+          <span class="badge badge-blue">Thyroid (thyr/o, thyroid/o)</span>
+          <span class="badge badge-violet">Parathyroid</span>
+          <span class="badge badge-amber">Adrenal (adren/o)</span>
+          <span class="badge badge-coral">Pancreas — islets (pancreat/o)</span>
+          <span class="badge badge-rose">Thymus (thym/o)</span>
+          <span class="badge badge-slate">Gonads (gonad/o)</span>
+          <span class="badge badge-green">Pineal gland</span>
+        </div>
+        <div class="tip teal"><strong>Adenohypophysis</strong> (aden/o + hypophys/o) = anterior pituitary (glandular tissue). <strong>Neurohypophysis</strong> = posterior pituitary (neural tissue).</div>
+      </div>
+      <div class="card">
+        <div class="card-title" style="color:var(--amber)">Key Electrolyte Terms</div>
+        <div style="font-size:13px;color:var(--gray-600);line-height:2.0">
+          <strong style="color:var(--black)">Sodium (natr/o)</strong> — hyponatremia = low blood sodium<br>
+          <strong style="color:var(--black)">Potassium (kal/i)</strong> — hypokalemia = low blood potassium<br>
+          <strong style="color:var(--black)">Calcium (calc/o)</strong> — hypercalcemia = high blood calcium; hypocalcemia = low<br>
+          <strong style="color:var(--black)">Glucose (gluc/o, glyc/o)</strong> — hypoglycemia = low blood sugar; hyperglycemia = high
+        </div>
+        <div class="tip amber">The prefix <strong>hypo-</strong> = below/low and <strong>hyper-</strong> = above/high. These pair with electrolyte or hormone combining forms + <strong>-emia</strong> (blood condition).</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== GLANDS & HORMONES ===== -->
+  <div class="section" id="sec-glands">
+    <div class="card">
+      <div class="card-title" style="color:var(--green)">Endocrine Glands — Location, Hormones &amp; Functions</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+        <div class="gland-card" style="border-color:var(--teal)">
+          <div class="gland-name" style="color:var(--teal)">Pituitary Gland (hypophys/o)</div>
+          <div class="gland-loc">Sella turcica of sphenoid bone; "master gland"</div>
+          <div class="gland-hor">
+            <strong>Anterior (adenohypophysis):</strong> GH (growth), TSH (thyroid), ACTH (adrenal cortex), FSH & LH (gonads), prolactin (milk)<br>
+            <strong>Posterior (neurohypophysis):</strong> ADH/vasopressin (water reabsorption), Oxytocin (uterine contractions, milk ejection)
+          </div>
+        </div>
+        <div class="gland-card" style="border-color:var(--blue)">
+          <div class="gland-name" style="color:var(--blue)">Thyroid Gland (thyr/o, thyroid/o)</div>
+          <div class="gland-loc">Anterior neck, over trachea; butterfly-shaped</div>
+          <div class="gland-hor">
+            <strong>T3 (triiodothyronine) & T4 (thyroxine):</strong> regulate metabolism, growth, body temperature, heart rate<br>
+            <strong>Calcitonin:</strong> lowers blood calcium (inhibits osteoclasts, promotes bone deposition)
+          </div>
+        </div>
+        <div class="gland-card" style="border-color:var(--violet)">
+          <div class="gland-name" style="color:var(--violet)">Parathyroid Glands</div>
+          <div class="gland-loc">4 tiny glands embedded in posterior thyroid</div>
+          <div class="gland-hor">
+            <strong>PTH (parathyroid hormone):</strong> RAISES blood calcium — stimulates osteoclasts (bone resorption), increases Ca reabsorption in kidneys, activates Vitamin D
+          </div>
+        </div>
+        <div class="gland-card" style="border-color:var(--amber)">
+          <div class="gland-name" style="color:var(--amber)">Adrenal Glands (adren/o)</div>
+          <div class="gland-loc">Superior poles of each kidney; two functional zones</div>
+          <div class="gland-hor">
+            <strong>Cortex:</strong> Cortisol (glucocorticoid — stress, metabolism), Aldosterone (mineralocorticoid — Na/K balance), Androgens<br>
+            <strong>Medulla:</strong> Epinephrine & Norepinephrine (fight-or-flight; sympathetic response)
+          </div>
+        </div>
+        <div class="gland-card" style="border-color:var(--coral)">
+          <div class="gland-name" style="color:var(--coral)">Pancreas — Islets of Langerhans (pancreat/o)</div>
+          <div class="gland-loc">Retroperitoneal; dual exocrine and endocrine function</div>
+          <div class="gland-hor">
+            <strong>Beta cells → Insulin:</strong> LOWERS blood glucose; promotes glucose uptake by cells<br>
+            <strong>Alpha cells → Glucagon:</strong> RAISES blood glucose; promotes glycogenolysis in liver<br>
+            <strong>Exocrine:</strong> digestive enzymes (amylase, lipase, protease) → duodenum
+          </div>
+        </div>
+        <div class="gland-card" style="border-color:var(--rose)">
+          <div class="gland-name" style="color:var(--rose)">Thymus Gland (thym/o)</div>
+          <div class="gland-loc">Mediastinum, anterior to heart; largest in children; involutes with age</div>
+          <div class="gland-hor">
+            <strong>Thymosin:</strong> stimulates T-lymphocyte maturation and differentiation; critical for immune system development<br>
+            Thymoma = tumor of thymus; associated with myasthenia gravis
+          </div>
+        </div>
+      </div>
+      <div class="tip green" style="margin-top:1rem"><strong>Calcitonin vs. PTH:</strong> Both regulate calcium but in OPPOSITE directions. Calcitonin (thyroid) LOWERS calcium. PTH (parathyroid) RAISES calcium. "Calcitonin tones down calcium."</div>
+    </div>
+  </div>
+
+  <!-- ===== PITUITARY AXIS ===== -->
+  <div class="section" id="sec-pituitary">
+    <div class="card">
+      <div class="card-title" style="color:var(--teal)">The Hypothalamus-Pituitary Axis — "Command Center"</div>
+      <div class="tip teal" style="margin-bottom:1rem">The <strong>hypothalamus (thalam/o)</strong> integrates nervous and endocrine systems. It produces <strong>releasing hormones</strong> → stimulate anterior pituitary → produce <strong>tropic hormones (-trop/o)</strong> → stimulate target glands.</div>
+      <div class="two-col">
+        <div>
+          <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--gray-400);margin-bottom:8px">Anterior Pituitary Hormones (adenohypophysis)</div>
+          <div style="font-size:13px;color:var(--gray-600);line-height:1.9">
+            <strong style="color:var(--black)">GH — Growth hormone</strong> — stimulates growth of bones/muscles; deficiency (GHD) in children → dwarfism; excess → acromegaly (adults)<br>
+            <strong style="color:var(--black)">TSH — Thyroid-stimulating hormone</strong> — stimulates thyroid to produce T3/T4<br>
+            <strong style="color:var(--black)">ACTH — Adrenocorticotropic hormone</strong> — stimulates adrenal cortex → cortisol; excess → Cushing disease<br>
+            <strong style="color:var(--black)">FSH &amp; LH — Gonadotropins (gonad/o + trop/o)</strong> — stimulate gonads (ovaries/testes)<br>
+            <strong style="color:var(--black)">Prolactin</strong> — stimulates milk production (lactation)
+          </div>
+        </div>
+        <div>
+          <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--gray-400);margin-bottom:8px">Posterior Pituitary Hormones (neurohypophysis)</div>
+          <div style="display:flex;flex-direction:column;gap:6px;margin-bottom:10px">
+            <div class="vs-item"><div class="vs-head" style="color:var(--violet)">ADH / Vasopressin</div><div class="vs-body">Anti-diuretic hormone; promotes water reabsorption in collecting ducts of kidneys; deficiency → diabetes insipidus (DI) → massive dilute urine output</div></div>
+            <div class="vs-item"><div class="vs-head" style="color:var(--rose)">Oxytocin</div><div class="vs-body">Stimulates uterine contractions during labor (parturition) and milk ejection (let-down reflex) during breastfeeding; also promotes bonding</div></div>
+          </div>
+          <div class="tip violet"><strong>-trop/o suffix</strong> = turning toward / stimulating. Tropic hormones stimulate target glands: thyrotropin (TSH), corticotropin (ACTH), gonadotropin (FSH/LH).</div>
+        </div>
+      </div>
+    </div>
+    <div class="two-col">
+      <div class="card">
+        <div class="card-title" style="color:var(--amber)">Insulin vs. Glucagon</div>
+        <div style="display:flex;flex-direction:column;gap:6px">
+          <div class="vs-item"><div class="vs-head" style="color:var(--amber)">Insulin (Beta cells)</div><div class="vs-body">Released when blood glucose is HIGH. LOWERS glucose by: promoting cellular uptake (especially muscle/fat), glycogen synthesis (glycogenesis), and inhibiting gluconeogenesis. Deficiency → diabetes mellitus.</div></div>
+          <div class="vs-item"><div class="vs-head" style="color:var(--coral)">Glucagon (Alpha cells)</div><div class="vs-body">Released when blood glucose is LOW. RAISES glucose by: stimulating glycogenolysis (glycogen → glucose) and gluconeogenesis in liver. Antagonist to insulin.</div></div>
+        </div>
+        <div class="tip amber"><strong>Memory:</strong> Insulin "invites" glucose INTO cells. Glucagon "goes to get" more glucose from liver.</div>
+      </div>
+      <div class="card">
+        <div class="card-title" style="color:var(--coral)">Adrenal Cortex Hormones — SAG</div>
+        <div style="display:flex;flex-direction:column;gap:5px">
+          <div class="vs-item"><div class="vs-head" style="color:var(--coral)">Sex hormones (Androgens)</div><div class="vs-body">DHEA; minor sex hormones from zona reticularis</div></div>
+          <div class="vs-item"><div class="vs-head" style="color:var(--amber)">Aldosterone (Mineralocorticoid)</div><div class="vs-body">Zona glomerulosa; regulates Na⁺ retention and K⁺ excretion → controls blood pressure and fluid balance; kal/i = potassium</div></div>
+          <div class="vs-item"><div class="vs-head" style="color:var(--blue)">Glucocorticoids (Cortisol)</div><div class="vs-body">Zona fasciculata; stress response; anti-inflammatory; raises blood glucose; excess → Cushing syndrome</div></div>
+        </div>
+        <div class="tip coral"><strong>SAG mnemonic</strong> (from superficial to deep): Salt (aldosterone) · Sugar (cortisol) · Sex (androgens)</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== PATHOLOGY ===== -->
+  <div class="section" id="sec-pathology">
+    <div class="sub-tabs" id="path-tabs">
+      <button class="sub-tab active" onclick="showPath('pituitary',this)">Pituitary</button>
+      <button class="sub-tab" onclick="showPath('thyroid',this)">Thyroid &amp; parathyroid</button>
+      <button class="sub-tab" onclick="showPath('adrenal',this)">Adrenal</button>
+      <button class="sub-tab" onclick="showPath('diabetes',this)">Diabetes mellitus</button>
+      <button class="sub-tab" onclick="showPath('electrolyte',this)">Electrolyte &amp; other</button>
+    </div>
+    <div class="card">
+      <div class="vpanel active" id="pp-pituitary">
+        <div class="pitem"><div><div class="pname">Acromegaly</div><div class="pdef">Excess GH in ADULTS after growth plates fuse → overgrowth of hands, feet, jaw, facial features; organomegaly. <em>acr/o (extremities) + -megaly (enlargement)</em>. Caused by pituitary adenoma. Treatment: surgery, radiation, somatostatin analogs.</div></div></div>
+        <div class="pitem"><div><div class="pname">Growth hormone deficiency (GHD)</div><div class="pdef">Insufficient GH in children → proportional short stature (pituitary dwarfism); in adults → decreased muscle/bone mass, fatigue. Treatment: recombinant GH injections.</div></div></div>
+        <div class="pitem"><div><div class="pname">Diabetes insipidus (DI)</div><div class="pdef">ADH (vasopressin) deficiency (central) or kidney resistance (nephrogenic) → inability to concentrate urine → massive polyuria (20+ L/day) and polydipsia. Blood glucose NORMAL (vs. DM). Treatment: desmopressin (synthetic ADH).</div></div></div>
+        <div class="pitem"><div><div class="pname">Cushing disease vs. Cushing syndrome</div><div class="pdef"><strong>Cushing disease:</strong> excess ACTH from pituitary adenoma → cortisol excess. <strong>Cushing syndrome:</strong> any cause of cortisol excess (most common: long-term corticosteroid use). Features: moon face, buffalo hump, central obesity, striae, hypertension, hyperglycemia, hypokalemia.</div></div></div>
+      </div>
+      <div class="vpanel" id="pp-thyroid">
+        <div class="pitem"><div><div class="pname">Hypothyroidism</div><div class="pdef">Insufficient thyroid hormone (T3/T4). hypo- + thyr/o. Most common: Hashimoto thyroiditis (autoimmune). Symptoms: weight gain, fatigue, cold intolerance, bradycardia, constipation, myxedema (severe). Labs: ↑TSH, ↓T4. Treatment: levothyroxine (synthetic T4).</div></div></div>
+        <div class="pitem"><div><div class="pname">Hyperthyroidism</div><div class="pdef">Excess thyroid hormone. hyper- + thyr/o. Most common: Graves disease (autoimmune — TSH receptor antibodies). Symptoms: weight loss, heat intolerance, tachycardia, palpitations, anxiety, exophthalmia (exo- + ophthalm/o = eye protrusion — Graves). Labs: ↓TSH, ↑T4. Treatment: antithyroids, radioactive iodine, thyroidectomy.</div></div></div>
+        <div class="pitem"><div><div class="pname">Goiter</div><div class="pdef">Enlarged thyroid gland; can occur in hypothyroidism, hyperthyroidism, or iodine deficiency. Visible neck swelling.</div></div></div>
+        <div class="pitem"><div><div class="pname">Thyroid carcinoma</div><div class="pdef">Most common: papillary (excellent prognosis). Detected by ultrasound and fine-needle aspiration. Treatment: thyroidectomy ± radioactive iodine. TFTs (thyroid function tests): TSH, free T4 — key diagnostic labs.</div></div></div>
+        <div class="pitem"><div><div class="pname">Hyperparathyroidism</div><div class="pdef">Excess PTH → hypercalcemia (calc/o + hyper- + -emia). "Bones, stones, groans, moans": bone pain, kidney stones, GI symptoms, psychiatric symptoms. Primary (parathyroid adenoma) or secondary (renal failure).</div></div></div>
+        <div class="pitem"><div><div class="pname">Hypoparathyroidism</div><div class="pdef">Insufficient PTH → hypocalcemia → muscle cramps, tetany, paresthesia, seizures. Often post-thyroidectomy (inadvertent parathyroid removal). Treatment: calcium + vitamin D supplements.</div></div></div>
+      </div>
+      <div class="vpanel" id="pp-adrenal">
+        <div class="pitem"><div><div class="pname">Cushing syndrome (cortisol excess)</div><div class="pdef">Hypercortisolism; any source. Features: central obesity, moon face, buffalo hump, purple abdominal striae, thin skin, hypertension, hyperglycemia, hypokalemia. Diagnosis: 24-hr urinary cortisol, low-dose dexamethasone suppression test.</div></div></div>
+        <div class="pitem"><div><div class="pname">Addison disease (adrenal insufficiency)</div><div class="pdef">Destruction of adrenal cortex → deficiency of cortisol AND aldosterone. Autoimmune (most common in developed world). Features: hyperpigmentation (bronze skin), hypotension, hyponatremia, hyperkalemia, weakness, weight loss. Treatment: hydrocortisone + fludrocortisone.</div></div></div>
+        <div class="pitem"><div><div class="pname">Pheochromocytoma</div><div class="pdef">Tumor of adrenal medulla → excess epinephrine/norepinephrine → episodic hypertensive crises, palpitations, headache, diaphoresis ("5 P's": Pressure, Palpitations, Perspiration, Pain headache, Pallor). Diagnosis: urine/plasma catecholamines, metanephrines. Treatment: surgical adrenalectomy.</div></div></div>
+        <div class="pitem"><div><div class="pname">Conn syndrome (Primary hyperaldosteronism)</div><div class="pdef">Excess aldosterone from adrenal adenoma → sodium retention, hypertension, hypokalemia (kal/i + hypo- + -emia). Diagnosis: aldosterone:renin ratio. Treatment: adrenalectomy or aldosterone antagonists (spironolactone).</div></div></div>
+      </div>
+      <div class="vpanel" id="pp-diabetes">
+        <div class="tip coral" style="margin-bottom:1rem"><strong>The 3 Polys of Diabetes Mellitus:</strong> Polyuria (poly- + -uria: excessive urination) · Polydipsia (poly- + -dipsia: excessive thirst) · Polyphagia (poly- + phag/o + -ia: excessive eating)</div>
+        <div style="display:flex;flex-direction:column;gap:10px">
+          <div style="border:2px solid var(--blue);border-radius:var(--radius-sm);padding:14px">
+            <div style="font-size:15px;font-weight:600;color:var(--blue);margin-bottom:8px">Type 1 Diabetes Mellitus</div>
+            <div style="font-size:13px;color:var(--gray-600);line-height:1.8">
+              <strong style="color:var(--black)">Mechanism:</strong> Autoimmune destruction of beta cells → absolute insulin deficiency<br>
+              <strong style="color:var(--black)">Onset:</strong> Usually childhood/adolescence; lean patients<br>
+              <strong style="color:var(--black)">Symptoms:</strong> 3 Polys + weight loss + DKA (diabetic ketoacidosis)<br>
+              <strong style="color:var(--black)">Labs:</strong> ↑↑glucose, ↑A1c, glucosuria, ketonuria, no insulin<br>
+              <strong style="color:var(--black)">Treatment:</strong> Insulin therapy (always required)
+            </div>
+          </div>
+          <div style="border:2px solid var(--amber);border-radius:var(--radius-sm);padding:14px">
+            <div style="font-size:15px;font-weight:600;color:var(--amber);margin-bottom:8px">Type 2 Diabetes Mellitus</div>
+            <div style="font-size:13px;color:var(--gray-600);line-height:1.8">
+              <strong style="color:var(--black)">Mechanism:</strong> Insulin resistance + relative insulin deficiency; beta cells fail over time<br>
+              <strong style="color:var(--black)">Onset:</strong> Usually adults; overweight; strong genetic component<br>
+              <strong style="color:var(--black)">Symptoms:</strong> Often asymptomatic early; 3 Polys when symptomatic<br>
+              <strong style="color:var(--black)">Labs:</strong> ↑glucose, ↑A1c, glucosuria; HHS (hyperosmolar hyperglycemic state) in crisis<br>
+              <strong style="color:var(--black)">Treatment:</strong> Lifestyle, metformin, other oral agents, then insulin if needed
+            </div>
+          </div>
+          <div style="border:2px solid var(--green);border-radius:var(--radius-sm);padding:12px">
+            <div style="font-size:13px;font-weight:600;color:var(--green);margin-bottom:6px">Diabetes Monitoring &amp; Labs</div>
+            <div style="font-size:13px;color:var(--gray-600);line-height:1.8">
+              <strong style="color:var(--black)">A1c (HbA1c)</strong> — glycosylated hemoglobin; reflects average blood glucose over 2–3 months; normal &lt;5.7%, prediabetes 5.7–6.4%, diabetes ≥6.5%<br>
+              <strong style="color:var(--black)">FPG (fasting plasma glucose)</strong> — fasting blood glucose; diabetes ≥126 mg/dL<br>
+              <strong style="color:var(--black)">Glucometer</strong> — gluc/o + -meter; device for self-monitoring blood glucose<br>
+              <strong style="color:var(--black)">Glucosuria</strong> — gluc/o + -uria; glucose in urine; renal threshold exceeded (~180 mg/dL)<br>
+              <strong style="color:var(--black)">Ketonuria</strong> — ketones in urine; indicates fat breakdown (DKA in Type 1)
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="vpanel" id="pp-electrolyte">
+        <div class="pitem"><div><div class="pname">Hyponatremia (natr/o)</div><div class="pdef">Low blood sodium (&lt;135 mEq/L). <em>hypo- + natr/o + -emia</em>. Causes: SIADH (excess ADH), heart failure, cirrhosis, excessive water intake. Symptoms: headache, confusion, seizures (if severe). natr/o = sodium.</div></div></div>
+        <div class="pitem"><div><div class="pname">Hypokalemia (kal/i)</div><div class="pdef">Low blood potassium (&lt;3.5 mEq/L). <em>hypo- + kal/i + -emia</em>. Causes: diuretics, vomiting, Cushing/Conn syndrome, alkalosis. Symptoms: muscle weakness, cramps, arrhythmias. kal/i = potassium.</div></div></div>
+        <div class="pitem"><div><div class="pname">Hypercalcemia (calc/o)</div><div class="pdef">High blood calcium (&gt;10.5 mg/dL). <em>hyper- + calc/o + -emia</em>. Causes: hyperparathyroidism (#1), malignancy. "Bones, stones, groans, moans" — bone pain, kidney stones, GI symptoms, psychiatric symptoms. calc/o = calcium.</div></div></div>
+        <div class="pitem"><div><div class="pname">Hypoglycemia (gluc/o)</div><div class="pdef">Low blood glucose (&lt;70 mg/dL). <em>hypo- + gluc/o + -emia</em>. Symptoms: shakiness, diaphoresis, tachycardia, confusion, loss of consciousness. Causes: insulin overdose, missed meal, alcohol. Treatment: "rule of 15" — 15g fast carbs.</div></div></div>
+        <div class="pitem"><div><div class="pname">Anorexia / Polyphagia</div><div class="pdef"><strong>Anorexia</strong> (an- + orex/o + -ia): loss of appetite; anorexia nervosa = eating disorder with self-starvation. <strong>Polyphagia</strong> (poly- + phag/o + -ia): excessive eating/hunger; classic DM symptom when cells can't use glucose.</div></div></div>
+        <div class="pitem"><div><div class="pname">Thymoma</div><div class="pdef">Tumor of the thymus gland. <em>thym/o + -oma</em>. May be benign or malignant. Associated with myasthenia gravis (autoimmune neuromuscular disorder). Treated with thymectomy.</div></div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== PROCEDURES ===== -->
+  <div class="section" id="sec-procedures">
+    <div class="two-col">
+      <div class="card">
+        <div class="card-title" style="color:var(--teal)">Diagnostic Procedures &amp; Lab Tests</div>
+        <div class="pitem"><div><div class="pname">A1c (HbA1c)</div><div class="pdef">Glycosylated hemoglobin; 2–3 month glucose average; gold standard for DM monitoring; ≥6.5% = diabetes diagnosis</div></div></div>
+        <div class="pitem"><div><div class="pname">Fasting plasma glucose (FPG)</div><div class="pdef">Blood glucose after 8-hr fast; ≥126 mg/dL = diabetes; 100–125 = prediabetes; normal &lt;100 mg/dL</div></div></div>
+        <div class="pitem"><div><div class="pname">Glucometer (gluc/o + -meter)</div><div class="pdef">Handheld device for self-monitoring blood glucose; uses fingerstick blood drop on test strip</div></div></div>
+        <div class="pitem"><div><div class="pname">Thyroid function tests (TFTs)</div><div class="pdef">TSH (most sensitive first-line), free T4, free T3; TSH ↑ = hypothyroidism; TSH ↓ = hyperthyroidism</div></div></div>
+        <div class="pitem"><div><div class="pname">Serum calcium / PTH levels</div><div class="pdef">Diagnoses hyperparathyroidism (↑PTH + ↑Ca) vs. hypoparathyroidism (↓PTH + ↓Ca)</div></div></div>
+        <div class="pitem"><div><div class="pname">24-hr urinary cortisol</div><div class="pdef">Screens for Cushing syndrome; elevated in hypercortisolism</div></div></div>
+        <div class="pitem"><div><div class="pname">Urinalysis (glucosuria, ketonuria)</div><div class="pdef">Detects glucose and ketones in urine; indicates poorly controlled DM (glucosuria) or DKA (ketonuria)</div></div></div>
+        <div class="pitem"><div><div class="pname">MRI/CT pituitary</div><div class="pdef">Identifies pituitary adenomas; used in diagnosis of acromegaly, Cushing disease, GHD</div></div></div>
+      </div>
+      <div class="card">
+        <div class="card-title" style="color:var(--coral)">Therapeutic Procedures</div>
+        <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;color:var(--gray-400);margin-bottom:6px">Thyroid</div>
+        <div class="pitem"><div><div class="pname">Thyroidectomy (thyr/o + -ectomy)</div><div class="pdef">Surgical removal of thyroid gland (total or partial); treats thyroid cancer, hyperthyroidism, large goiter; risk: hypoparathyroidism, laryngeal nerve injury</div></div></div>
+        <div class="pitem"><div><div class="pname">Radioactive iodine (RAI) therapy</div><div class="pdef">I-131 taken orally; absorbed by thyroid → destroys thyroid tissue; treats hyperthyroidism and thyroid cancer</div></div></div>
+        <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;color:var(--gray-400);margin:10px 0 6px">Pancreas</div>
+        <div class="pitem"><div><div class="pname">Pancreatectomy (pancreat/o + -ectomy)</div><div class="pdef">Surgical removal of pancreas (total or partial); for pancreatic cancer, chronic pancreatitis; total → requires insulin and enzyme replacement</div></div></div>
+        <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;color:var(--gray-400);margin:10px 0 6px">Pharmacology</div>
+        <div style="display:flex;flex-wrap:wrap;gap:5px;margin-bottom:8px">
+          <span class="badge badge-blue">Insulin (DM Type 1)</span>
+          <span class="badge badge-amber">Metformin (DM Type 2)</span>
+          <span class="badge badge-teal">Levothyroxine (hypothyroidism)</span>
+          <span class="badge badge-green">Antithyroids — PTU, methimazole</span>
+          <span class="badge badge-violet">Desmopressin (DI)</span>
+          <span class="badge badge-coral">Hydrocortisone (Addison)</span>
+          <span class="badge badge-rose">Calcium + Vit D (hypoparathyroidism)</span>
+          <span class="badge badge-slate">Corticosteroids (various)</span>
+        </div>
+        <div class="tip coral"><strong>Lob/o in endocrine context</strong>: Refers to lobes of glands. The thyroid has right and left lobes (lob/o). The pituitary has anterior and posterior lobes. Lobectomy = removal of a lobe.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== VOCABULARY ===== -->
+  <div class="section" id="sec-vocab">
+    <div class="sub-tabs" id="vocab-tabs">
+      <button class="sub-tab active" onclick="showVocab('combining',this)">Combining forms</button>
+      <button class="sub-tab" onclick="showVocab('prefixes',this)">Prefixes &amp; suffixes</button>
+      <button class="sub-tab" onclick="showVocab('decode',this)">Term decoding</button>
+    </div>
+    <div class="card">
+      <div class="vpanel active" id="vt-combining">
+        <table class="vtable"><thead><tr><th>Combining form</th><th>Meaning</th><th>Example</th></tr></thead><tbody>
+          <tr><td><code>aden/o</code></td><td>gland</td><td>adenoma, adenohypophysis</td></tr>
+          <tr><td><code>adren/o</code></td><td>adrenal gland</td><td>adrenal, adrenalectomy</td></tr>
+          <tr><td><code>calc/o</code></td><td>calcium</td><td>hypercalcemia, calcitonin</td></tr>
+          <tr><td><code>crin/o</code></td><td>to secrete</td><td>endocrine, exocrine, endocrinology</td></tr>
+          <tr><td><code>gluc/o, glyc/o</code></td><td>glucose, sugar</td><td>glucosuria, glycosylated, glucometer</td></tr>
+          <tr><td><code>gonad/o</code></td><td>gonads (sex glands)</td><td>gonadotropin</td></tr>
+          <tr><td><code>hypophys/o</code></td><td>pituitary gland</td><td>adenohypophysis, neurohypophysis</td></tr>
+          <tr><td><code>kal/i</code></td><td>potassium</td><td>hypokalemia (low potassium)</td></tr>
+          <tr><td><code>lob/o</code></td><td>lobe</td><td>lobectomy (thyroid lobe removal)</td></tr>
+          <tr><td><code>natr/o</code></td><td>sodium</td><td>hyponatremia (low sodium)</td></tr>
+          <tr><td><code>ophthalm/o</code></td><td>eye</td><td>exophthalmia (Graves disease)</td></tr>
+          <tr><td><code>orex/o</code></td><td>appetite</td><td>anorexia (no appetite), polyphagia</td></tr>
+          <tr><td><code>pancreat/o</code></td><td>pancreas</td><td>pancreatectomy, pancreatitis</td></tr>
+          <tr><td><code>thalam/o</code></td><td>thalamus / hypothalamus</td><td>hypothalamic, thalamotomy</td></tr>
+          <tr><td><code>thym/o</code></td><td>thymus gland</td><td>thymoma, thymectomy</td></tr>
+          <tr><td><code>thyr/o, thyroid/o</code></td><td>thyroid gland</td><td>thyroidectomy, hypothyroidism</td></tr>
+          <tr><td><code>trop/o</code></td><td>turning toward / stimulating</td><td>gonadotropin, thyrotropin (TSH)</td></tr>
+        </tbody></table>
+      </div>
+      <div class="vpanel" id="vt-prefixes">
+        <div style="font-size:13px;font-weight:600;color:var(--green);margin-bottom:8px">Prefixes</div>
+        <table class="vtable" style="margin-bottom:1rem"><thead><tr><th>Prefix</th><th>Meaning</th><th>Example</th></tr></thead><tbody>
+          <tr><td><code>an-</code></td><td>without, absence</td><td>anorexia (no appetite)</td></tr>
+          <tr><td><code>endo-</code></td><td>within, inside</td><td>endocrine (secretes within/into blood)</td></tr>
+          <tr><td><code>exo-, ex-</code></td><td>outside, outward</td><td>exocrine (secretes outward via duct); exophthalmia</td></tr>
+          <tr><td><code>hypo-</code></td><td>below, deficient</td><td>hypoglycemia, hypothyroidism, hypokalemia</td></tr>
+          <tr><td><code>poly-</code></td><td>many, much, excessive</td><td>polyuria, polydipsia, polyphagia</td></tr>
+        </tbody></table>
+        <div style="font-size:13px;font-weight:600;color:var(--teal);margin-bottom:8px">Suffixes</div>
+        <table class="vtable"><thead><tr><th>Suffix</th><th>Meaning</th><th>Example</th></tr></thead><tbody>
+          <tr><td><code>-crine</code></td><td>to secrete</td><td>endocrine, exocrine</td></tr>
+          <tr><td><code>-ia</code></td><td>condition, state</td><td>hypoglycemia, exophthalmia, anorexia</td></tr>
+          <tr><td><code>-oma</code></td><td>tumor, mass</td><td>thymoma, adenoma</td></tr>
+        </tbody></table>
+      </div>
+      <div class="vpanel" id="vt-decode">
+        <table class="vtable"><thead><tr><th>Term</th><th>Word parts</th><th>Definition</th></tr></thead><tbody>
+          <tr><td>Adenohypophysis</td><td>aden/o + hypophys/o + -is</td><td>Glandular portion of pituitary (anterior pituitary)</td></tr>
+          <tr><td>Acromegaly</td><td>acr/o + -megaly</td><td>Enlargement of extremities (excess GH in adults)</td></tr>
+          <tr><td>Anorexia</td><td>an- + orex/o + -ia</td><td>Condition of no/reduced appetite</td></tr>
+          <tr><td>Exophthalmia</td><td>ex/o + ophthalm/o + -ia</td><td>Abnormal eyeball protrusion (Graves disease)</td></tr>
+          <tr><td>Glucosuria</td><td>gluc/o + -uria</td><td>Glucose in the urine</td></tr>
+          <tr><td>Hypercalcemia</td><td>hyper- + calc/o + -emia</td><td>Excessive calcium in the blood</td></tr>
+          <tr><td>Hypoglycemia</td><td>hypo- + gluc/o + -emia</td><td>Below-normal glucose in the blood</td></tr>
+          <tr><td>Hypokalemia</td><td>hypo- + kal/i + -emia</td><td>Below-normal potassium in the blood</td></tr>
+          <tr><td>Hyponatremia</td><td>hypo- + natr/o + -emia</td><td>Below-normal sodium in the blood</td></tr>
+          <tr><td>Hypothyroidism</td><td>hypo- + thyr/o + -ism</td><td>Condition of insufficient thyroid hormone</td></tr>
+          <tr><td>Ketonuria</td><td>keton/o + -uria</td><td>Ketones in the urine (DKA, fat breakdown)</td></tr>
+          <tr><td>Pancreatectomy</td><td>pancreat/o + -ectomy</td><td>Surgical removal of the pancreas</td></tr>
+          <tr><td>Polydipsia</td><td>poly- + -dipsia</td><td>Excessive thirst (DM, DI symptom)</td></tr>
+          <tr><td>Polyphagia</td><td>poly- + phag/o + -ia</td><td>Excessive eating/hunger (DM symptom)</td></tr>
+          <tr><td>Polyuria</td><td>poly- + -uria</td><td>Excessive urine output (DM, DI symptom)</td></tr>
+          <tr><td>Thymoma</td><td>thym/o + -oma</td><td>Tumor of the thymus gland</td></tr>
+          <tr><td>Thyroidectomy</td><td>thyroid/o + -ectomy</td><td>Surgical removal of the thyroid gland</td></tr>
+        </tbody></table>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== FLASHCARDS ===== -->
+  <div class="section" id="sec-flashcards">
+    <button class="fc-shuffle" onclick="shuffleCards()">⇄ Shuffle cards</button>
+    <div class="fc-nav">
+      <button class="fc-btn" onclick="prevCard()">&#8592;</button>
+      <div class="fc-counter" id="fc-counter">1 / 24</div>
+      <button class="fc-btn" onclick="nextCard()">&#8594;</button>
+    </div>
+    <div class="flip-wrap" onclick="flipCard()">
+      <div class="flip-inner" id="fc-inner">
+        <div class="flip-front"><div class="flip-term" id="fc-term">thyr/o, thyroid/o</div><div class="flip-hint">click to reveal</div></div>
+        <div class="flip-back"><div class="flip-def" id="fc-def">thyroid gland</div><div class="flip-ex" id="fc-ex">thyroidectomy, hypothyroidism</div></div>
+      </div>
+    </div>
+    <div style="font-size:12px;color:var(--gray-400);text-align:center;margin-top:10px">Click to flip · Arrows to navigate</div>
+  </div>
+
+  <!-- ===== QUIZ ===== -->
+  <div class="section" id="sec-quiz">
+    <div class="card" id="quiz-card">
+      <div class="quiz-progress" id="quiz-dots"></div>
+      <div class="quiz-q-text" id="quiz-q"></div>
+      <div class="quiz-opts" id="quiz-opts"></div>
+      <div id="quiz-fb" style="display:none"></div>
+      <button class="quiz-next" id="quiz-next" onclick="nextQ()" style="display:none">Next question →</button>
+    </div>
+  </div>
+
+</div>
+<script>
+const SECS=['overview','glands','pituitary','pathology','procedures','vocab','flashcards','quiz'];
+const visited=new Set(['overview']);
+function showSec(id,btn){
+  SECS.forEach(s=>document.getElementById('sec-'+s).classList.remove('active'));
+  document.querySelectorAll('.nav-row .tab').forEach(b=>b.classList.remove('active'));
+  document.getElementById('sec-'+id).classList.add('active'); btn.classList.add('active');
+  visited.add(id);
+  const pct=Math.round((visited.size/SECS.length)*100);
+  document.getElementById('prog-fill').style.width=pct+'%';
+  document.getElementById('prog-label').textContent=pct+'%';
+  if(id==='flashcards') renderCard();
+  if(id==='quiz'&&!quizStarted) startQuiz();
+}
+function showPath(id,btn){
+  document.querySelectorAll('[id^="pp-"]').forEach(el=>el.classList.remove('active'));
+  document.querySelectorAll('#path-tabs .sub-tab').forEach(b=>b.classList.remove('active'));
+  document.getElementById('pp-'+id).classList.add('active'); btn.classList.add('active');
+}
+function showVocab(id,btn){
+  document.querySelectorAll('[id^="vt-"]').forEach(el=>el.classList.remove('active'));
+  document.querySelectorAll('#vocab-tabs .sub-tab').forEach(b=>b.classList.remove('active'));
+  document.getElementById('vt-'+id).classList.add('active'); btn.classList.add('active');
+}
+let allCards=[
+  {term:'thyr/o, thyroid/o', def:'thyroid gland', ex:'thyroidectomy, hypothyroidism'},
+  {term:'adren/o', def:'adrenal gland', ex:'adrenalectomy, adrenal cortex'},
+  {term:'pancreat/o', def:'pancreas', ex:'pancreatectomy, pancreatitis'},
+  {term:'hypophys/o', def:'pituitary gland', ex:'adenohypophysis, neurohypophysis'},
+  {term:'thym/o', def:'thymus gland', ex:'thymoma, thymectomy'},
+  {term:'aden/o', def:'gland', ex:'adenoma, adenohypophysis'},
+  {term:'crin/o', def:'to secrete', ex:'endocrine, exocrine'},
+  {term:'gluc/o, glyc/o', def:'glucose, sugar', ex:'glucosuria, glucometer'},
+  {term:'calc/o', def:'calcium', ex:'hypercalcemia, calcitonin'},
+  {term:'natr/o', def:'sodium', ex:'hyponatremia (low sodium)'},
+  {term:'kal/i', def:'potassium', ex:'hypokalemia (low potassium)'},
+  {term:'gonad/o', def:'gonads (sex glands)', ex:'gonadotropin'},
+  {term:'trop/o', def:'turning toward / stimulating', ex:'gonadotropin, thyrotropin (TSH)'},
+  {term:'orex/o', def:'appetite', ex:'anorexia, polyphagia'},
+  {term:'lob/o', def:'lobe', ex:'lobectomy (thyroid lobe)'},
+  {term:'poly-', def:'many, much, excessive', ex:'polyuria, polydipsia, polyphagia'},
+  {term:'hypo-', def:'below, deficient', ex:'hypoglycemia, hypothyroidism'},
+  {term:'-crine', def:'to secrete', ex:'endocrine, exocrine'},
+  {term:'-oma', def:'tumor, mass', ex:'thymoma, adenoma'},
+  {term:'endo-', def:'within, inside', ex:'endocrine (secretes into blood)'},
+  {term:'exo-, ex-', def:'outside, outward', ex:'exocrine, exophthalmia'},
+  {term:'an-', def:'without, absence', ex:'anorexia (no appetite)'},
+  {term:'Insulin', def:'Beta cells → LOWERS blood glucose', ex:'promotes glucose uptake; deficiency = DM'},
+  {term:'Glucagon', def:'Alpha cells → RAISES blood glucose', ex:'stimulates glycogenolysis in liver'},
+];
+let fcIdx=0,fcFlipped=false;
+function renderCard(){
+  const c=allCards[fcIdx];
+  document.getElementById('fc-term').textContent=c.term;
+  document.getElementById('fc-def').textContent=c.def;
+  document.getElementById('fc-ex').textContent=c.ex;
+  document.getElementById('fc-counter').textContent=(fcIdx+1)+' / '+allCards.length;
+  document.getElementById('fc-inner').classList.remove('flipped'); fcFlipped=false;
+}
+function flipCard(){ fcFlipped=!fcFlipped; document.getElementById('fc-inner').classList.toggle('flipped',fcFlipped); }
+function nextCard(){ fcIdx=(fcIdx+1)%allCards.length; renderCard(); }
+function prevCard(){ fcIdx=(fcIdx-1+allCards.length)%allCards.length; renderCard(); }
+function shuffleCards(){
+  for(let i=allCards.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [allCards[i],allCards[j]]=[allCards[j],allCards[i]]; }
+  fcIdx=0; renderCard();
+}
+const QUIZ=[
+  {q:'What does crin/o mean?', ans:'To secrete', opts:['Gland','To secrete','Hormone','Stimulate']},
+  {q:'The three "Polys" of diabetes mellitus are:', ans:'Polyuria · Polydipsia · Polyphagia', opts:['Polyuria · Polydipsia · Polyphagia','Polyuria · Polypnea · Polydipsia','Polyphagia · Polydipsia · Polymorphia','Polyuria · Polyphagia · Polyarthria']},
+  {q:'Thyroidectomy (thyroid/o + -ectomy) treats:', ans:'Thyroid cancer, hyperthyroidism, or large goiter', opts:['Hypothyroidism','Diabetes insipidus','Thyroid cancer, hyperthyroidism, or large goiter','Parathyroid disease']},
+  {q:'Hypokalemia (hypo- + kal/i + -emia) means:', ans:'Below-normal potassium in the blood', opts:['Low calcium in blood','High potassium in blood','Below-normal potassium in the blood','Low sodium in blood']},
+  {q:'Insulin is produced by which pancreatic cells?', ans:'Beta cells in the islets of Langerhans', opts:['Alpha cells','Acinar cells','Beta cells in the islets of Langerhans','Delta cells']},
+  {q:'The A1c (HbA1c) test reflects:', ans:'Average blood glucose over 2–3 months', opts:['Fasting blood glucose only','Average blood glucose over 2–3 months','Daily glucose fluctuations','Insulin production capacity']},
+  {q:'Cushing syndrome features include:', ans:'Moon face, central obesity, buffalo hump, hypertension, striae', opts:['Weight loss, exophthalmia, tachycardia','Moon face, central obesity, buffalo hump, hypertension, striae','Hyperpigmentation, hypotension, hyperkalemia','Tall stature, enlarged hands and feet']},
+  {q:'Hypercalcemia from excess PTH causes the classic:', ans:'"Bones, stones, groans, moans" — bone pain, kidney stones, GI, psychiatric symptoms', opts:['3 Polys — polyuria, polydipsia, polyphagia','"Bones, stones, groans, moans" — bone pain, kidney stones, GI, psychiatric symptoms','TRAP: tremor, rigidity, akinesia, postural instability','FAST: face, arm, speech, time']},
+  {q:'Acromegaly (acr/o + -megaly) results from:', ans:'Excess GH in adults after growth plates close → enlarged extremities and features', opts:['GH deficiency in children','Excess GH in adults after growth plates close → enlarged extremities and features','Excess thyroid hormone','Excess cortisol from adrenal adenoma']},
+  {q:'Anorexia (an- + orex/o + -ia) means:', ans:'Condition of without/reduced appetite', opts:['Excessive eating','Condition of without/reduced appetite','Excessive thirst','Loss of smell']},
+  {q:'The posterior pituitary (neurohypophysis) releases:', ans:'ADH (vasopressin) and Oxytocin', opts:['GH and TSH','ACTH and prolactin','ADH (vasopressin) and Oxytocin','FSH and LH']},
+  {q:'Diabetes insipidus (DI) differs from diabetes mellitus (DM) because:', ans:'DI = ADH deficiency (normal glucose); DM = insulin problem (high glucose)', opts:['DI involves high glucose; DM involves low ADH','DI = ADH deficiency (normal glucose); DM = insulin problem (high glucose)','They are the same disease with different names','DI affects the pancreas; DM affects the pituitary']},
+];
+let qIdx=0,score=0,results=[],quizStarted=false;
+function startQuiz(){ quizStarted=true; qIdx=0; score=0; results=[]; renderQ(); }
+function renderQ(){
+  const q=QUIZ[qIdx];
+  document.getElementById('quiz-dots').innerHTML=QUIZ.map((_,i)=>`<div class="q-dot ${i<results.length?(results[i]?'pass':'fail'):''}" title="Q${i+1}"></div>`).join('');
+  document.getElementById('quiz-q').textContent=(qIdx+1)+'. '+q.q;
+  document.getElementById('quiz-opts').innerHTML=q.opts.map(o=>`<button class="q-opt" onclick="checkAns(this,'${o.replace(/'/g,"\\'")}','${q.ans.replace(/'/g,"\\'")}')">${o}</button>`).join('');
+  const fb=document.getElementById('quiz-fb'); fb.style.display='none'; fb.className='q-fb';
+  document.getElementById('quiz-next').style.display='none';
+}
+function checkAns(btn,chosen,correct){
+  document.querySelectorAll('.q-opt').forEach(b=>{ b.disabled=true; if(b.textContent===correct) b.classList.add('correct'); });
+  const ok=chosen===correct;
+  if(ok){ score++; btn.classList.add('correct'); } else btn.classList.add('wrong');
+  results.push(ok);
+  document.getElementById('quiz-dots').innerHTML=QUIZ.map((_,i)=>`<div class="q-dot ${i<results.length?(results[i]?'pass':'fail'):''}" title="Q${i+1}"></div>`).join('');
+  const fb=document.getElementById('quiz-fb');
+  fb.style.display='block'; fb.className='q-fb '+(ok?'correct':'wrong');
+  fb.textContent=ok?'✓ Correct!':`✗ Correct answer: ${correct}`;
+  const nxt=document.getElementById('quiz-next');
+  nxt.style.display='inline-block';
+  nxt.textContent=qIdx===QUIZ.length-1?'See results':'Next question →';
+}
+function nextQ(){ qIdx++; if(qIdx>=QUIZ.length){ showScore(); return; } renderQ(); }
+function showScore(){
+  const pct=Math.round((score/QUIZ.length)*100);
+  const cls=pct>=80?'great':pct>=60?'ok':'retry';
+  const msg=pct>=90?'Outstanding! Chapter 14 mastered.':pct>=70?'Good work! Review a few terms.':'Keep studying — check the glands and pathology tabs.';
+  document.getElementById('quiz-card').innerHTML=`<div class="score-wrap"><div class="score-big ${cls}">${score}/${QUIZ.length}</div><div style="font-size:13px;color:var(--gray-400);margin-top:4px">${pct}%</div><div class="score-msg">${msg}</div><button class="retry-btn" onclick="retakeQuiz()">Retake quiz</button></div>`;
+}
+function retakeQuiz(){
+  document.getElementById('quiz-card').innerHTML=`<div class="quiz-progress" id="quiz-dots"></div><div class="quiz-q-text" id="quiz-q"></div><div class="quiz-opts" id="quiz-opts"></div><div id="quiz-fb" style="display:none"></div><button class="quiz-next" id="quiz-next" onclick="nextQ()" style="display:none">Next question →</button>`;
+  qIdx=0; score=0; results=[]; renderQ();
+}
+</script>
+</body>
+</html>
